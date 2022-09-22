@@ -239,7 +239,7 @@ cardContainer.addEventListener('click', (event) => {
         itemInCart['size'] = size.textContent;
         //добавим купленный предмет (объект) в корзину (в массив)
         itemsInCart.push(itemInCart);
-        localStorage.setItem('cart', itemsInCart);        
+        localStorage.setItem('cart', JSON.stringify(itemsInCart));        
       }
     }
 

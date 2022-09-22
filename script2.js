@@ -1,4 +1,4 @@
-sessionStorage.getItem('cart');
+const itemsInCart = JSON.parse(localStorage.getItem('cart'));
 console.log(itemsInCart);
 const itemTemplate = document.querySelector('#item-cart-template');
 const itemContainer = document.querySelector('#table-body');
