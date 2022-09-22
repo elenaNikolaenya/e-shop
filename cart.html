@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">  
+  <script src="https://kit.fontawesome.com/9dfda335ff.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Noto+Sans:ital,wght@1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>e-Shoes cart</title>
+</head>
+<body>
+  <div class="wrapper">
+  <header class="header">    
+    <a href="#" class="logo">e-Shoes</a>
+    <nav class="navigation">
+      <a href="index.html" class="navigation__item">Каталог</a>
+      <a href="#contacts" class="navigation__item">Контакты</a>
+      <a href="" class="navigation__item">Доставка</a>
+      <a href="#" class="navigation__item">Корзина</a>
+    </nav>   
+  </header>
+  <main>
+    <h1>Ваша лучшая пара уже здесь!</h1>    
+        
+    <section id="cart">
+      <table>
+        <thead>
+          <tr>
+            <th>Фото</th>
+            <th>Название</th>
+            <th>Размер</th>
+            <th>Цена (BYN)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <tr class="item-cart">
+            <td class="img-data">
+              <div class="img-container-cart"><img src="./img/1.jpg"></div>
+            </td>  
+            <td>
+              <h2>Массивные бордовые дерби с массивной подошвой</h2>
+            </td>
+            <td>
+              <span class="size-cart">36</span>
+            </td>    
+            <td>
+              <span class="price-cart">269</span>
+            </td>
+            <td class="btn-data">
+              <button type="button" id="delete-button">Удалить</button> 
+            </td>             
+          </tr>
+        </tbody>               
+      </table>   
+    </section>         
+  </main>
+  <footer>
+    <div class="footer-container">
+      <a href="#" class="logo">e-Shoes</a>
+      <ul class="contacts" id="contacts">
+        <li class="contacts__item"><a href="tel:+375295555555">+375(29) 5-555-555</a></li>
+        <li class="contacts__item"><a href="mailto:e-shoes@gmail.com">e-shoes@gmail.com</a></li>
+        <li class="contacts__item"><a href="https://goo.gl/maps/536nieWzhqDZT4qK6" target="_blank"> Минск, ул.Мележа, 1, офис 412</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <template id="item-cart-template">
+    <tr class="item-cart">
+      <td class="img-data">
+        <div class="img-container-cart"><img src=""></div>
+      </td>  
+      <td>
+        <h2></h2>
+      </td>
+      <td>
+        <span class="size-cart"></span>
+      </td>    
+      <td>
+        <span class="price-cart"></span>
+      </td>
+      <td class="btn-data">
+        <button type="button" id="delete-button">Удалить</button> 
+      </td>             
+    </tr>
+  </template>
+
+  <script src="script2.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">  
+  <script src="https://kit.fontawesome.com/9dfda335ff.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Noto+Sans:ital,wght@1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>e-Shoes</title>
+</head>
+<body>
+  <div class="wrapper">
+  <header class="header">    
+    <a href="#" class="logo">e-Shoes</a>
+    <nav class="navigation">
+      <a href="#catalog" class="navigation__item">Каталог</a>
+      <a href="#contacts" class="navigation__item">Контакты</a>
+      <a href="" class="navigation__item">Доставка</a>
+      <a href="cart.html" class="navigation__item">Корзина</a>
+    </nav>   
+  </header>
+  <main>
+    <h1>Ваша лучшая пара ждет вас!</h1>    
+    <div class="search-container">
+      <input type="search" id="search-input" placeholder="Какую обувь вы хотите найти?">
+      <button type="button" id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="sort-container">
+      <label for="sort">Сортировать по:</label>
+      <select name="sort" id="sort">
+        <option value="alphabet">алфавиту</option>
+        <option selected value="price-min">цене по возрастанию</option>
+        <option value="price-max">цене по убыванию</option>
+        <option value="brand">брендам</option>
+      </select>
+    </div>
+    <section id="catalog">    
+    </section>
+    <p id="nothing-found"></p>    
+  </main>
+  <footer>
+    <div class="footer-container">
+      <a href="#" class="logo">e-Shoes</a>
+      <ul class="contacts" id="contacts">
+        <li class="contacts__item"><a href="tel:+375295555555">+375(29) 5-555-555</a></li>
+        <li class="contacts__item"><a href="mailto:e-shoes@gmail.com">e-shoes@gmail.com</a></li>
+        <li class="contacts__item"><a href="https://goo.gl/maps/536nieWzhqDZT4qK6" target="_blank"> Минск, ул.Мележа, 1, офис 412</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <template id="item-template">
+    <div class="item">
+      <div class="img-container">
+        <img src="">
+        <span class="price"></span>
+      </div>      
+      <div class="content">        
+        <h2></h2>
+        <p></p>
+        <div class="sizes"></div>
+      </div>
+      <button type="button" id="buy-button">Купить</button>      
+    </div>
+  </template>
+
+  <template id="item-cart-template">
+    <div class="item">
+      <div class="img-container">
+        <img src="">
+        <span class="price"></span>
+      </div>      
+      <div class="content">        
+        <h2></h2>
+        <p></p>
+        <div class="sizes"></div>
+      </div>
+      <button type="button" id="buy-button">Купить</button>      
+    </div>
+  </template>
+
+
+  <script src="script.js"></script>
+</div>
+</body>
+</html>
