@@ -1,5 +1,5 @@
 sessionStorage.getItem('cart');
-console.log(window.itemsInCart);
+console.log(itemsInCart);
 const itemTemplate = document.querySelector('#item-cart-template');
 const itemContainer = document.querySelector('#table-body');
 
