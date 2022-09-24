@@ -255,6 +255,8 @@ cardContainer.addEventListener('click', (event) => {
         localStorage.setItem('cart', JSON.stringify(itemsInCart));
         //подсветим карточку товара
         highlight(selectedItem);
+        //уберем отметку с размера
+        size.classList.remove('size-selected');
         //изменим количество товаров рядом с корзиной в шапке
         counter.textContent = ` (${itemsInCart.length})`;             
       }
