@@ -199,16 +199,28 @@ sortSelect.addEventListener('change', (event) => {
 })
 
 //теперь та часть, в которой я усложняю себе жизнь))
-// цель - сделать так, чтобы можно было выбрать один размер на карточке кликом по квадратику с размером
-// выбранный элемент меняет цвет. Одновременно может быть выбран только 1 размер
-// при клике на кнопку Купить выбранная карточка с выбранным размером помещается в корзину (немного модифицируется внешне)
+// цель описана в README.md
 
 // массив, куда будем складывать купленные предметы (потом из него будет рендериться корзина)
-var itemsInCart = [];
-
+let itemsInCart = [];
+// на случай, если в корзине уже что-то лежит
+if (localStorage.getItem('cart')) {
+  itemsInCart = JSON.parse(localStorage.getItem('cart'));
+}
+//указатель количества товаров в корзине (в шапке)
+const counter = document.querySelector('.counter');
+counter.textContent = ` (${itemsInCart.length})`;
 // так как одновременно может быть выбран только 1 размер, со всех остальных элементов выделение придется убирать
 // значит пригодятся все эл-ты с размером на странице
 const allSizes = document.querySelectorAll('.size');
+
+//функция для подсветки карточки при помещении в корзину
+function highlight (card) {
+  card.classList.add('lighted');
+  setTimeout(() => {
+    card.classList.remove('lighted');
+  }, 200);
+}
 
 // повесим listener на контейнер с карточками
 cardContainer.addEventListener('click', (event) => {
@@ -225,10 +237,10 @@ cardContainer.addEventListener('click', (event) => {
     // если клик был на кнопке Купить
   } else if (event.target.id === "buy-button") {
     //создадим объект для свойств купленного предмета
-    let itemInCart = {};
+    let itemInCart = {};    
         
     //чтобы узнать, какой размер выбран, проверим все элементы size нашей карточки
-    const sizesSelectedItem = selectedItem.querySelectorAll('.size');
+    const sizesSelectedItem = selectedItem.querySelectorAll('.size');    
   
     for (let size of sizesSelectedItem) {
       //если выбран один из размеров, заполняем объект данными
@@ -239,7 +251,12 @@ cardContainer.addEventListener('click', (event) => {
         itemInCart['size'] = size.textContent;
         //добавим купленный предмет (объект) в корзину (в массив)
         itemsInCart.push(itemInCart);
-        localStorage.setItem('cart', JSON.stringify(itemsInCart));        
+        //и положим этот массив в localeStorage, чтобы потом использовать на странице с корзиной
+        localStorage.setItem('cart', JSON.stringify(itemsInCart));
+        //подсветим карточку товара
+        highlight(selectedItem);
+        //изменим количество товаров рядом с корзиной в шапке
+        counter.textContent = ` (${itemsInCart.length})`;             
       }
     }
 

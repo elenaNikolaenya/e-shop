@@ -19,7 +19,7 @@
     <nav class="navigation">
       <a href="index.html" class="navigation__item">Каталог</a>
       <a href="#contacts" class="navigation__item">Контакты</a>
-      <a href="" class="navigation__item">Доставка</a>
+      <a href="#" class="navigation__item">Доставка</a>
       <a href="#" class="navigation__item">Корзина</a>
     </nav>   
   </header>
@@ -30,6 +30,7 @@
       <table>
         <thead>
           <tr>
+            <th>№</th>
             <th>Фото</th>
             <th>Название</th>
             <th>Размер</th>
@@ -37,24 +38,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody id="table-body">
-          <tr class="item-cart">
-            <td class="img-data">
-              <div class="img-container-cart"><img src="./img/1.jpg"></div>
-            </td>  
-            <td>
-              <h2>Массивные бордовые дерби с массивной подошвой</h2>
-            </td>
-            <td>
-              <span class="size-cart">36</span>
-            </td>    
-            <td>
-              <span class="price-cart">269</span>
-            </td>
-            <td class="btn-data">
-              <button type="button" id="delete-button">Удалить</button> 
-            </td>             
-          </tr>
+        <tbody id="table-body">          
         </tbody>               
       </table>   
     </section>         
@@ -72,6 +56,9 @@
 
   <template id="item-cart-template">
     <tr class="item-cart">
+      <td>
+        <span class="number"></span>
+      </td>
       <td class="img-data">
         <div class="img-container-cart"><img src=""></div>
       </td>  
