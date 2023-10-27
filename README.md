@@ -1,8 +1,34 @@
 # e-shop
 
+Basic requirements are covered:
++ Search is not case-sensitive
++ If none of the products meet the search criteria, the corresponding message is shown to the user.
++ Search is triggered by pressing "Enter" while focused on a text input field
++ Sorting is applied to search results (if the user was looking for something), and not to all available products
++ Search resets applied sorting (including resetting the selected option in HTML)
+
+By default, sorting by price in ascending order is selected
+
+Additional functionality implemented:
++ when you click on a size:
+      - it lights up
+      - you can select only 1 size at a time on the entire page
++ when you click on the Buy button:
+      - the selected product of the required size will be placed in the cart.
+      - the highlight with the size will disappear
+      - the card will blink
+      - the counter in the header next to the link to the cart will be increased 
++ when you click on the Delete button in the Cart tab:
+      - the item will be removed from the cart
+      - the counter in the header in the Catalog tab will be decreased
+
+Todo:
+- The Order button in the Cart
+
+
 Выполнены основные требования:
 + Поиск не чувствителен к регистру
-+ Если ни один из товаров не подошел под условие поиска, пользователю показывается соответствующую надпись
++ Если ни один из товаров не подошел под условие поиска, пользователю показывается соответствующая надпись
 + Поиск срабатывает при нажатии на Enter в текстовом поле
 + Сортировка применяется к результатам поиска (если пользователь что-то искал), а не ко всем возможным товарам
 + Поиск сбрасывает примененную сортировку (в том числе сбрасывает выбранную опцию в HTML)
@@ -22,6 +48,5 @@
     - товар удалится из корзины
     - счетчик в шапке в Каталоге уменьшится
 
-Надо бы сделать:
+Сделать:
 - кнопку Оформить заказ в Корзине
-- придумать, как по другому удалять товар из корзины, так как есть - моргает вся страница при перезагрузке, видимо, сделано не эффективно

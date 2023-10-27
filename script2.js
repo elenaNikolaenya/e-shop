@@ -1,4 +1,3 @@
-//по сути все то же самое, что и в каталоге
 let itemsInCart = [];
 if (localStorage.getItem('cart')) {
   itemsInCart = JSON.parse(localStorage.getItem('cart'));
@@ -29,35 +28,15 @@ function renderRows(arr) {
 
 renderRows(itemsInCart);
 
-//сделаем кнопку Удалить
-//добавим listener на блок со строками таблицы
+//button Delete
 itemContainer.addEventListener('click', (event) => {
   if (event.target.id === "delete-button") {
-    //узнаем индекс элемента, который нужно удалить из массива
     const deletedItem = event.target.closest('.item-cart');  
     const deletedIndex = Number(deletedItem.querySelector('.number').textContent) - 1;
-    //удалим товар из массива
     itemsInCart.splice(deletedIndex, 1);
-    //удалим массив из локалстоража
-    localStorage.removeItem('cart');
-    //и заменим его на обновленный
-    localStorage.setItem('cart', JSON.stringify(itemsInCart));
-    //перезапустим страницу, отрисуется таблица без удаленного товара
-    location.reload();
+    localStorage.removeItem('cart');    
+    localStorage.setItem('cart', JSON.stringify(itemsInCart));    
+    itemContainer.innerHTML = '';
+    renderRows(itemsInCart);
   }
-  
-  
-  
-
 })
-
-/*
-deleteButton.addEventListener('click', (event) => {
-  const deletedItem = event.target.closest('.item-cart');
-  console.log(deletedItem);
-  const deletedIndex = deletedItem.querySelector('.number').taxtContent - 1;
-  console.log(deletedIndex);
-
-})*/
-
-

@@ -106,7 +106,7 @@ items = [
   } 
 ]
 
-//начнем с отрисовки карточек 
+//rendering of cards  
 let currentState = [...items];
 const cardTemplate = document.querySelector('#item-template');
 const cardContainer = document.querySelector('#catalog');
@@ -146,7 +146,7 @@ function renderCards(arr) {
 
 renderCards(currentState.sort((a, b) => a.price - b.price));
 
-//поиск
+//search
 const searchInput = document.querySelector("#search-input");
 const searchButton = document.querySelector("#search-button");
 const sortSelect = document.querySelector('#sort');
@@ -164,7 +164,7 @@ function applySearch() {
 searchInput.addEventListener('search', applySearch);
 searchButton.addEventListener('click', applySearch);
 
-//сортировка
+//sorting
 function sortByAlphabet(a, b) {
   if (a > b) {
     return 1;
@@ -198,23 +198,19 @@ sortSelect.addEventListener('change', (event) => {
   renderCards(currentState);
 })
 
-//теперь та часть, в которой я усложняю себе жизнь))
-// цель описана в README.md
-
-// массив, куда будем складывать купленные предметы (потом из него будет рендериться корзина)
+// an array for items in the cart
 let itemsInCart = [];
-// на случай, если в корзине уже что-то лежит
+// in case, when we already have something in the cart
 if (localStorage.getItem('cart')) {
   itemsInCart = JSON.parse(localStorage.getItem('cart'));
 }
-//указатель количества товаров в корзине (в шапке)
+// counter for items in the cart (in the header)
 const counter = document.querySelector('.counter');
 counter.textContent = ` (${itemsInCart.length})`;
-// так как одновременно может быть выбран только 1 размер, со всех остальных элементов выделение придется убирать
-// значит пригодятся все эл-ты с размером на странице
+// all elements with size-number on the page
 const allSizes = document.querySelectorAll('.size');
 
-//функция для подсветки карточки при помещении в корзину
+//makes the card blink
 function highlight (card) {
   card.classList.add('lighted');
   setTimeout(() => {
@@ -222,47 +218,42 @@ function highlight (card) {
   }, 200);
 }
 
-// повесим listener на контейнер с карточками
 cardContainer.addEventListener('click', (event) => {
-  //получаем всю карточку, на которой произошел клик
+  //get the card, that was clicked on
   const selectedItem = event.target.closest('.item');
-  //если клик был на квадратике с размером
+  //if the click was on an element with size-number...
   if (event.target.classList.contains('size')) {
-    //то сначала удалим ранее выбранный размер (если был) со всех карточек
+    //... delete the previous selected size from all cards
     for (let el of allSizes) {
       el.classList.remove('size-selected');
     };
-    //и добавим выделение на кликнутый элемент (при повторном клике снимется)
+    //...and add lighting to the currently selected size (will be removed by the next click)
     event.target.classList.toggle('size-selected');
-    // если клик был на кнопке Купить
-  } else if (event.target.id === "buy-button") {
-    //создадим объект для свойств купленного предмета
+    // if the click was on the Buy button
+  } else if (event.target.id === "buy-button") {    
     let itemInCart = {};    
         
-    //чтобы узнать, какой размер выбран, проверим все элементы size нашей карточки
+    //to get the chosen size check all elements with size on the card
     const sizesSelectedItem = selectedItem.querySelectorAll('.size');    
   
     for (let size of sizesSelectedItem) {
-      //если выбран один из размеров, заполняем объект данными
+      //if one of sizes is selected, fill the object with data
       if (size.classList.contains('size-selected')) {        
         itemInCart['title'] = selectedItem.querySelector('h2').textContent;
         itemInCart['price'] = parseFloat(selectedItem.querySelector('.price').textContent);
         itemInCart['img'] = selectedItem.querySelector('img').src;
         itemInCart['size'] = size.textContent;
-        //добавим купленный предмет (объект) в корзину (в массив)
+        //add this object to the cart (an array)
         itemsInCart.push(itemInCart);
-        //и положим этот массив в localeStorage, чтобы потом использовать на странице с корзиной
-        localStorage.setItem('cart', JSON.stringify(itemsInCart));
-        //подсветим карточку товара
+        //add this array to localeStorage, to use it in the cart tab
+        localStorage.setItem('cart', JSON.stringify(itemsInCart));        
         highlight(selectedItem);
-        //уберем отметку с размера
         size.classList.remove('size-selected');
-        //изменим количество товаров рядом с корзиной в шапке
         counter.textContent = ` (${itemsInCart.length})`;             
       }
     }
 
-    //если ни один размер не выбран, предлагаем его выбрать
+    //if no one of sizes is selected, propose to choose it
     if (!itemInCart['size']) {
       alert("Выберите размер обуви");
     }        
